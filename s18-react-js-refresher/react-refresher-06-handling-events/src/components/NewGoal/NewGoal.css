@@ -1,0 +1,14 @@
+/* 
+
+Lecture 280. Handling Events:
+
+We are using CSS3 with responsive design 
+hence the unit of `rem` is used on the
+margin property.
+
+*/
+
+.new-goal {
+  margin: 2rem;
+  text-align: center;
+}
