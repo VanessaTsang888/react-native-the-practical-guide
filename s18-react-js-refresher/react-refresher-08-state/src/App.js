@@ -1,15 +1,10 @@
 /*********************************************************************************
 
-Lecture 282. Managing State:
+Lecture 283 - More About State:
 
-Regular JS Array - React ignors it but when we change this Array it should
-update the JSX of the component.
-
-To use state we need to import `useState`  from react. Its a built-in func 
-and a React Hook. A func that we can execute inside of functional components
-such as App Component.
-The `conact()` method does not modify the original arrays or strings but returns 
-a new one containing the concatenated elements.
+`setCourseGoals((prevCourseGoals) => prevCourseGoals.concat(newGoal));`
+Update our course goals by adding a new goal.
+No chance React deferring updates - bulletproof approach which will always work.
 
 ********************************************************************************/
 
@@ -19,13 +14,6 @@ import GoalList from './components/GoalList/GoalList';
 import NewGoal from './components/NewGoal/NewGoal';
 import './App.css';
 
-// Regular JS Array - React ignors it and we need to tell React not to ignor it
-// and instead when we change this Array it should update the UI/the JSX of the component
-// in this case of the App component.
-// Pass our Array of goals as the initial state. This tell React that we have some state.
-// Store it in constant as we need to get access to this initial state so we can use it in
-// the rest of this component. This hook returns two elements, the latest state and a func
-// that allows us to update that state snapshot.
 const App = () => {
   const [courseGoals, setCourseGoals] = useState([
     { id: 'cg1', text: 'Finish the Course' },
@@ -35,6 +23,8 @@ const App = () => {
 
   const addNewGoalHandler = (newGoal) => {
     // Update our course goals by adding a new goal.
+    // No chance React deferring updates - bulletproof approach which will always work.
+    // We need this as our state update depends on the previous state's data as this one does.
     setCourseGoals((prevCourseGoals) => prevCourseGoals.concat(newGoal));
   };
 
